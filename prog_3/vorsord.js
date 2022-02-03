@@ -1,4 +1,9 @@
-class vorsord extends LivingCreature{
+let LivingCreature = require('./LivingCreature');
+    module.exports = class vorsord extends LivingCreature{
+    constructor(x, y) {
+        super(x, y)
+
+    }
     getNewCordinates() {
         this.directions = [
             [this.x - 1, this.y - 1],
@@ -11,26 +16,10 @@ class vorsord extends LivingCreature{
             [this.x + 1, this.y + 1]
         ];
     }
-    chooseCell(char) {
-        this.getNewCordinates();
-        let result = [];
 
-
-        for (let i = 0; i < this.directions.length; i++) {
-            let x = this.directions[i][0];
-            let y = this.directions[i][1];
-
-            if (y < matrix.length && y >= 0 && x < matrix[0].length && x >= 0) {
-                if (matrix[y][x] == char) {
-                    result.push(this.directions[i]);
-                }
-            }
-        }
-        return result;
-    }
     move() {
-        let found = this.chooseCell(0);
-        let exact = random(found)
+        let found = super.chooseCell(0);
+        let exact = found[[Math.floor(Math.random() * found.length)]];
 
         if (exact) {
             let x = exact[0];
@@ -40,21 +29,23 @@ class vorsord extends LivingCreature{
             this.x = x;
             this.y = y;
         }
-
         else {
-            let found = this.chooseCell(1);
-            let exact = random(found)
-            let x = exact[0];
-            let y = exact[1];
-            matrix[y][x] = 5;
-            matrix[this.y][this.x] = 1;
-            this.x = x;
-            this.y = y;
+            console.log("aa");
+            let found = super.chooseCell(1);
+            let exact = found[[Math.floor(Math.random() * found.length)]];
+            if (exact) {
+                let x = exact[0];
+                let y = exact[1];
+                matrix[y][x] = 5;
+                matrix[this.y][this.x] = 1;
+                this.x = x;
+                this.y = y;
+            }
         }
     }
     eat() {
-        let found = this.chooseCell(3);
-        let exact = random(found);
+        let found = super.chooseCell(3);
+        let exact = found[[Math.floor(Math.random() * found.length)]];;
 
         if (exact) {
             let x = exact[0];

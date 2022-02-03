@@ -1,4 +1,6 @@
-class gishatich extends LivingCreature{
+let LivingCreature = require('./LivingCreature');
+
+module.exports = class Gishatich extends LivingCreature {
     constructor(x, y) {
         super(x,y);
         this.energy = 3;
@@ -15,30 +17,10 @@ class gishatich extends LivingCreature{
             [this.x + 1, this.y + 1]
         ];
     }
-    chooseCell(char, char1) {
-        this.getNewCordinates();
-        let result = [];
-
-
-        for (let i = 0; i < this.directions.length; i++) {
-            let x = this.directions[i][0];
-            let y = this.directions[i][1];
-
-            if (y < matrix.length && y >= 0 && x < matrix[0].length && x >= 0) {
-                if (matrix[y][x] == char || matrix[y][x] == char1) {
-                    result.push(this.directions[i]);
-
-                }
-            }
-
-        }
-        return result;
-
-
-    }
+    
     mul() {
-        let found = this.chooseCell(0);
-        let exact = random(found)
+        let found = super.chooseCell(0);
+        let exact = found[[Math.floor(Math.random() * found.length)]]
 
         if (exact && this.energy > 10) {
             let x = exact[0];
@@ -57,8 +39,8 @@ class gishatich extends LivingCreature{
 
     }
     eat() {
-        let found = this.chooseCell(1, 2);
-        let exact = random(found);
+        let found = super.chooseCell(1, 2);
+        let exact = found[[Math.floor(Math.random() * found.length)]];
 
         if (exact) {
             this.energy += 5;
@@ -95,7 +77,7 @@ class gishatich extends LivingCreature{
     }
     move() {
         let found = this.chooseCell(0);
-        let exact = random(found)
+        let exact = found[[Math.floor(Math.random() * found.length)]]
 
         if (exact) {
             let x = exact[0];
