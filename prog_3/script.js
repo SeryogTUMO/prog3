@@ -1,29 +1,41 @@
-var matrix = [];
-var grassArr = [];
-var grassEaterArr = [];
-var gishatichner = [];
-var hrashagorcarr = [];
-var xotabuysarr = [];
-var vorsordarr = [];
+var socket = io();
 var side = 30;
+
 function setup() {
- 
-    noStroke();
-
-    frameRate(10);
-    createCanvas(matrix[0].length * side, matrix.length * side);
-    background('#acacac');
-
-  
+    createCanvas(30 * side, 30 * side);
+    background("#acacac");
 }
-
-function draw() {
-
+socket.on("Winter", function (data) {
+    weath = data;
+})
+socket.on("Summer", function (data) {
+    weath = data;
+})
+socket.on("Spring", function (data) {
+    weath = data;
+})
+socket.on("Autumn", function (data) {
+    weath = data;
+})
+ var weath = "spring";
+function nkarel(matrix) {
+    
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
 
             if (matrix[y][x] == 1) {
-                fill("green");
+                if (weath == "spring") {
+                    fill("darkgreen");
+                }
+                else if (weath == "summer") {
+                    fill("#79a83b");
+                }
+                else if (weath == "autumn") {
+                    fill("#ff8453");
+                }
+                if (weath == "winter") {
+                    fill("#ffffff");
+                }
             }
             else if (matrix[y][x] == 0) {
                 fill("#acacac");
@@ -47,29 +59,41 @@ function draw() {
 
         }
     }
+}
 
-    for (let i = 0; i < grassArr.length; i++) {
-        const grass = grassArr[i];
-        grass.mul();
-    }
-    for (let i = 0; i < grassEaterArr.length; i++) {
-        const eater = grassEaterArr[i];
-        eater.eat();
-    }
-    for (let i = 0; i < gishatichner.length; i++) {
-        const gishatich = gishatichner[i];
-        gishatich.eat();
-    }
-    for (let i = 0; i < hrashagorcarr.length; i++) {
-        const hrashagorc = hrashagorcarr[i];
-        hrashagorc.move();
-    }
-    for (let i = 0; i < vorsordarr.length; i++) {
-        const vorsord = vorsordarr[i];
-        vorsord.eat();
-    }
-    for (let i = 0; i < xotabuysarr.length; i++) {
-        const xotabuys = xotabuysarr[i];
-        xotabuys.move();
-    }
+socket.on('send matrix', nkarel);
+
+function Winter() {
+    socket.emit("winter");
+}
+function Summer() {
+    socket.emit("summer");
+}
+function Spring() {
+    socket.emit("spring");
+}
+function Autumn() {
+    socket.emit("autumn");
+}
+function AddGrass(){
+    socket.emit("addGrass");
+}
+function AddGrassEater(){
+    socket.emit("addGrassEater");
+}
+function KillAll(){
+    socket.emit("killAll");
+}
+function AddGishatic(){
+    socket.emit("addGishatich");
+}
+function AddHrashagorc(){
+    socket.emit("addHrashagorc");
+}
+function AddVorsord(){
+    socket.emit("addVorsord");
+}
+function AddXotabuys(){
+    socket.emit("addXotabuys");
+
 }

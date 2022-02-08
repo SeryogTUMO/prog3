@@ -1,24 +1,13 @@
 let LivingCreature = require('./LivingCreature');
-module.exports = class GrassEater extends LivingCreature{
-    constructor(x, y, index){
-        super(x, y, index);
-        this.energy = 8
+module.exports = class GrassEater extends LivingCreature {
+    constructor(x, y) {
+        super(x, y);
+        this.energy = 8;
     }
-    getNewCordinates() {
-        this.directions = [
-            [this.x - 1, this.y - 1],
-            [this.x, this.y - 1],
-            [this.x + 1, this.y - 1],
-            [this.x - 1, this.y],
-            [this.x + 1, this.y],
-            [this.x - 1, this.y + 1],
-            [this.x, this.y + 1],
-            [this.x + 1, this.y + 1]
-        ];
-    }
+
     mul() {
         let found = super.chooseCell(0);
-        let exact = found[[Math.floor(Math.random() * found.length)]];
+        let exact = found[[Math.round(Math.random() * found.length)]];
 
         if (exact && this.energy > 5) {
             let x = exact[0];
@@ -28,13 +17,13 @@ module.exports = class GrassEater extends LivingCreature{
             matrix[y][x] = 2;
             grassEaterArr.push(eater);
 
-            this.energy = 10;
+            this.energy = 8;
         } else {
         }
     }
     eat() {
         let found = super.chooseCell(1);
-        let exact = found[[Math.floor(Math.random() * found.length)]];
+        let exact = found[[Math.round(Math.random() * found.length)]];
 
         if (exact) {
             this.energy += 5;
@@ -51,7 +40,7 @@ module.exports = class GrassEater extends LivingCreature{
             matrix[this.y][this.x] = 0;
 
             this.x = x;
-            this.y = y
+            this.y = y;
 
             if (this.energy > 30) {
                 this.mul()
@@ -62,25 +51,25 @@ module.exports = class GrassEater extends LivingCreature{
     }
     move() {
         let found = super.chooseCell(0);
-        let exact = found[[Math.floor(Math.random() * found.length)]]
+        let exact = found[[Math.round(Math.random() * found.length)]]
 
         if (exact) {
             let x = exact[0];
             let y = exact[1];
 
-            matrix[y][x] = 2
-            matrix[this.y][this.x] = 0
+            matrix[y][x] = 2;
+            matrix[this.y][this.x] = 0;
 
             this.x = x;
             this.y = y;
 
-            this.energy--
+            this.energy--;
 
             if (this.energy < 0) {
                 this.die()
             }
         } else {
-            this.energy--
+            this.energy--;
             if (this.energy < 0) {
                 this.die()
             }

@@ -5,97 +5,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <style>
-        canvas {
-            display: block;
-            margin: 0 auto;
-        }
-
-        div {
-            display: inline-block;
-        }
-
-        h1 {
-            padding: 20px;
-            text-align: center;
-        }
-
-        body {
-            font-family: 'Noto Sans', sans-serif !important;
-        }
-        .red {
-            color: red
-        }
-        .blue {
-            color: blue
-        }
-        .orange {
-            color: orange
-        }
 
     </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <h1 class="red">Ծրագրավորում II Գյումրի</h1>
-            </tr>
-            <tr>
-                <h1 class="blue">Դասընթացավար` Արտակ Միլիթոսյան</h1>
-            </tr>
-            <tr>
-                <h1 class="orange">Հեղինակ` Սերգեյ Գրիգորյան</h1>
-            </tr>
 
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Գույն</th>
-                <th scope="col">Նկարագրություն</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td scope="row" style="background-color:green;"></td>
-                <td>Կանաչը խոտն է, որը բազմանում է N ցիկլը մեկ,մահանում է երբ նրան ուտում է խոտակերը, կամ այրում է
-                    կրակը, կամ նրան կոխկրտում է գիշատիչը</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td scope="row" style="background-color:orange;"></td>
-                <td>Դեղինը խոտակերն է, որը բազմանում է N հատ խոտ ուտելուց հետո և մահանում է N հատ չուտելուց հետո, կամ
-                    երբ նրան ուտում է գիշատիչը, կամ երբ նրան այրում է կրակը:</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td scope="row" style="background-color:red;"></td>
-                <td>Կարմիրը գիշատիչն է, որը բազմանում է N հատ խոտ կամ խոտակեր ուտելուց հետո և մահանում է N հատ չուտելուց
-                    հետո կամ երբ նրան սպանում է վորսորդը:</td>
-            </tr>
-            <tr>
-                <th scope="row">4</th>
-                <td scope="row" style="background-color:deepskyblue;"></td>
-                <td>Բաց կապույտը հրաշագորձն է, որը իր հետ բերում է դաշտ խոտակերներին:</td>
-            </tr>
-            <tr>
-                <th scope="row">5</th>
-                <td scope="row" style="background-color:black;"></td>
-                <td>Սևը որսորդն է, որը սպանում է գիշատիչին, որսորդները չեն մահանում:</td>
-            </tr>
-            <tr>
-                <th scope="row">6</th>
-                <td scope="row" style="background-color:blue;"></td>
-                <td>Մուգ կապույտը ամպն է, նրան անվանել եմ խոտաբույս, նրա անցաց ճանապարհով աճում է խոտ:</td>
-            </tr>
+<h1><span>Programming </span>III<span> Gyumri</span></h1>
+<h1><span>Teacher </span><span>Karlen</span></h1>
+<h1><span>performer </span><span>Sergey Grigoryan</span></h1>
 
-        </tbody>
-    </table>
-    <script src="script.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
+<div class="desc__block">
+    <div class="desc__row">
+        <div class="rows">
+            <div class="desc__num" style="background-color: green">1</div>
+            <p class="desc__text">Կանաչը ☘️🍀 խոտն է, որը բազմանում է N ցիկլը մեկ,մահանում է երբ նրան ուտում է
+                խոտակերը, կամ այրում է
+                կրակը, կամ նրան կոխկրտում է գիշատիչը</p>
+        </div>
+    </div>
+    <div class="desc__row">
+        <div class="rows">
+            <div class="desc__num" style="background-color: orange">2</div>
+            <p class="desc__text">Դեղինը 🐂 խոտակերն է, որը բազմանում է N հատ խոտ ուտելուց հետո և մահանում է N հատ
+                չուտելուց հետո, կամ
+                երբ նրան ուտում է գիշատիչը, կամ երբ նրան այրում է կրակը:</p>
+        </div>
+    </div>
+    <div class="desc__row">
+        <div class="rows">
+            <div class="desc__num" style="background-color: red">3</div>
+            <p class="desc__text">Կարմիրը 🐯 գիշատիչն է, որը բազմանում է N հատ խոտ կամ խոտակեր ուտելուց հետո և
+                մահանում է N հատ չուտելուց
+                հետո կամ երբ նրան սպանում է վորսորդը:</p>
+        </div>
+    </div>
+    <div class="desc__row">
+        <div class="rows">
+            <div class="desc__num" style="background-color: deepskyblue">4</div>
+            <p class="desc__text">Բաց կապույտը 🧙 հրաշագորձն է, որը իր հետ բերում է դաշտ խոտակերներին:</p>
+        </div>
+    </div>
+    <div class="desc__row">
+        <div class="rows">
+            <div class="desc__num" style="background-color: black">5</div>
+            <p class="desc__text">Սևը 🧜‍♂️ որսորդն է, որը սպանում է գիշատիչին, որսորդները չեն մահանում:</p>
+        </div>
+    </div>
+    <div class="desc__row">
+        <div class="rows">
+            <div class="desc__num" style="background-color: blue">6</div>
+            <p class="desc__text">Մուգ կապույտը 🌧️ ամպն է, նրան անվանել եմ խոտաբույս, նրա անցաց ճանապարհով աճում է
+                խոտ:</p>
+        </div>
+    </div>
+</div>
+<div class="all__btns">
+    <button onclick="AddGrass()" class="add__btn" style="background-color: green">Add Grass</button>
+    <button onclick="AddGrassEater()" class="add__btn" style="background-color: yellow; color: black">Add GrassEater</button>
+    <button onclick="AddGishatic()" class="add__btn" style="background-color: red">Add Gishatic</button>
+    <button onclick="AddHrashagorc()" class="add__btn" style="background-color: deepskyblue">Add Hrashagorc</button>
+    <button onclick="AddVorsord()" class="add__btn" style="background-color: black">Add Vorsord</button>
+    <button onclick="AddXotabuys()" class="add__btn" style="background-color: blue">Add Amp</button>
+    <button onclick="KillAll()" class="add__btn" style="background-color: white; color: black">Kill all</button>
+
+</div>
+<div class="exanak__btns">
+    <button onclick="Spring()" class="btn__exanak" style="background-color: darkgreen">Spring</button>
+    <button onclick="Summer()" class="btn__exanak" style="background-color: #79a83b">Summer</button>
+    <button onclick="Autumn()" class="btn__exanak" style="background-color: #ff8453">Autumn</button>
+    <button onclick="Winter()" class="btn__exanak" style="background-color: #ffffff">Winter</button>
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
+<script src="script.js"></script>
 
 </body>
 

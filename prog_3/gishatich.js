@@ -1,23 +1,10 @@
 let LivingCreature = require('./LivingCreature');
-
 module.exports = class Gishatich extends LivingCreature {
     constructor(x, y) {
-        super(x,y);
+        super(x, y);
         this.energy = 3;
     }
-    getNewCordinates() {
-        this.directions = [
-            [this.x - 1, this.y - 1],
-            [this.x, this.y - 1],
-            [this.x + 1, this.y - 1],
-            [this.x - 1, this.y],
-            [this.x + 1, this.y],
-            [this.x - 1, this.y + 1],
-            [this.x, this.y + 1],
-            [this.x + 1, this.y + 1]
-        ];
-    }
-    
+
     mul() {
         let found = super.chooseCell(0);
         let exact = found[[Math.floor(Math.random() * found.length)]]
@@ -26,16 +13,16 @@ module.exports = class Gishatich extends LivingCreature {
             let x = exact[0];
             let y = exact[1];
 
-            let eater = new gishatich(x, y);
-            matrix[y][x] = 0;
+            let eater = new Gishatich(x, y);
+            matrix[y][x] = 3;
             gishatichner.push(eater);
             this.energy = 3;
         }
-        for (let i = 1; i < 10; i++) {
-            if (gishatichner.length > 5) {
-                this.die;
-            }
-        }
+        // for (let i = 1; i < 10; i++) {
+        //     if (gishatichner.length > 5) {
+        //         this.die;
+        //     }
+        // }
 
     }
     eat() {
@@ -61,13 +48,10 @@ module.exports = class Gishatich extends LivingCreature {
                     }
                 }
             }
-
             matrix[y][x] = 3;
             matrix[this.y][this.x] = 0;
-
             this.x = x;
             this.y = y;
-
             if (this.energy > 30) {
                 this.mul()
             }
@@ -108,6 +92,5 @@ module.exports = class Gishatich extends LivingCreature {
             }
         }
         matrix[this.y][this.x] = 0;
-
     }
 }

@@ -1,22 +1,9 @@
 let LivingCreature = require('./LivingCreature');
-    module.exports = class vorsord extends LivingCreature{
+
+module.exports = class Vorsord extends LivingCreature {
     constructor(x, y) {
-        super(x, y)
-
+        super(x, y);
     }
-    getNewCordinates() {
-        this.directions = [
-            [this.x - 1, this.y - 1],
-            [this.x, this.y - 1],
-            [this.x + 1, this.y - 1],
-            [this.x - 1, this.y],
-            [this.x + 1, this.y],
-            [this.x - 1, this.y + 1],
-            [this.x, this.y + 1],
-            [this.x + 1, this.y + 1]
-        ];
-    }
-
     move() {
         let found = super.chooseCell(0);
         let exact = found[[Math.floor(Math.random() * found.length)]];
@@ -30,7 +17,6 @@ let LivingCreature = require('./LivingCreature');
             this.y = y;
         }
         else {
-            console.log("aa");
             let found = super.chooseCell(1);
             let exact = found[[Math.floor(Math.random() * found.length)]];
             if (exact) {
@@ -44,7 +30,7 @@ let LivingCreature = require('./LivingCreature');
         }
     }
     eat() {
-        let found = super.chooseCell(3);
+        let found = super.chooseCell(3, 4);
         let exact = found[[Math.floor(Math.random() * found.length)]];;
 
         if (exact) {
@@ -57,8 +43,15 @@ let LivingCreature = require('./LivingCreature');
                     }
                 }
             }
+            else if (matrix[y][x] == 4) {
+                for (let i = 0; i < hrashagorcarr.length; i++) {
+                    if (hrashagorcarr[i].x == x && hrashagorcarr[i].y == y) {
+                        hrashagorcarr.splice(i, 1)
+                    }
+                }
+            }
             matrix[this.y][this.x] = 0;
-            matrix[y][x] = 0;
+            matrix[y][x] = 5;
             this.x = x;
             this.y = y;
         }
